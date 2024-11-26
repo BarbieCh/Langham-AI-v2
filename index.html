@@ -1,0 +1,436 @@
+"use client"
+
+import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { MarketGrowthChart } from './components/market-growth-chart';
+
+const Presentation: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const totalSlides = 14;
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-white">
+      <div className="w-full max-w-5xl overflow-hidden bg-white rounded-lg shadow-xl">
+        <div className="relative">
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {/* Title Slide */}
+              <div className="slide min-w-full p-12" id="slide1">
+                <div className="max-w-4xl mx-auto space-y-8">
+                  <h1 className="text-4xl font-serif text-center">Transforming Luxury Hospitality Through AI</h1>
+                  <div className="w-full h-px bg-[#C5B358]" />
+                  <h2 className="text-2xl font-serif text-[#C5B358] text-center">A Vision for Langham Hospitality Group</h2>
+                  <div className="bg-[#C5B358]/20 p-6 text-center">
+                    <p className="text-xl italic">"Where Timeless Elegance Meets Artificial Intelligence"</p>
+                  </div>
+                  <div className="text-center text-gray-600 mt-8">
+                    <p>Langham Portfolio: 4 Brands | 37 Destinations | 48 Hotels</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Agenda Slide */}
+              <div className="slide min-w-full p-12" id="slide2">
+                <div className="max-w-4xl mx-auto space-y-8">
+                  <h1 className="text-3xl font-serif mb-8">Agenda</h1>
+                  <div className="space-y-6">
+                    <div className="space-y-2">
+                      <h2 className="text-xl font-serif text-[#C5B358]">1. Market Overview</h2>
+                      <ul className="list-disc list-inside pl-4 text-gray-600">
+                        <li>The Luxury Hospitality Landscape</li>
+                        <li>Cross-Industry AI Success Cases</li>
+                      </ul>
+                    </div>
+                    <div className="space-y-2">
+                      <h2 className="text-xl font-serif text-[#C5B358]">2. Langham + AI</h2>
+                      <ul className="list-disc list-inside pl-4 text-gray-600">
+                        <li>3-Year Strategic Timeline</li>
+                        <li>Digital Guest Journey Enhancement</li>
+                        <li>Smart Room Innovation</li>
+                        <li>Revenue Optimization</li>
+                        <li>Personalization at Scale</li>
+                        <li>Cross-Property Integration</li>
+                        <li>Loyalty Program Enhancement</li>
+                        <li>Expected Outcomes</li>
+                      </ul>
+                    </div>
+                    <div className="space-y-2">
+                      <h2 className="text-xl font-serif text-[#C5B358]">3. Next Steps</h2>
+                      <ul className="list-disc list-inside pl-4 text-gray-600">
+                        <li>Implementation Timeline</li>
+                        <li>Resource Allocation</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Market Overview Slide */}
+              <div className="slide min-w-full p-12" id="slide3">
+                <div className="max-w-4xl mx-auto space-y-8">
+                  <h1 className="text-3xl font-serif mb-8">The Luxury Hospitality Landscape</h1>
+                  <div className="grid grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <h2 className="text-xl font-serif text-[#C5B358]">Market Dynamics</h2>
+                      <ul className="list-disc list-inside pl-4 text-gray-600 space-y-2">
+                        <li>Global luxury hotel market expected to reach $95B by 2025</li>
+                        <li>Rising demand for experiential luxury</li>
+                        <li>Increasing focus on sustainability</li>
+                        <li>Growing importance of personalization</li>
+                      </ul>
+                    </div>
+                    <div className="space-y-4">
+                      <h2 className="text-xl font-serif text-[#C5B358]">Key Challenges</h2>
+                      <ul className="list-disc list-inside pl-4 text-gray-600 space-y-2">
+                        <li>Evolving guest expectations</li>
+                        <li>Need for technological integration</li>
+                        <li>Maintaining personal touch</li>
+                        <li>Competition from boutique hotels</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <MarketGrowthChart />
+                </div>
+              </div>
+
+              {/* Cross-Industry AI Success Cases */}
+              <div className="slide min-w-full p-12" id="slide4">
+                <h1 className="text-3xl font-serif mb-8">Cross-Industry AI Success Cases</h1>
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <h2 className="text-xl font-serif text-[#C5B358]">Retail: Sephora</h2>
+                    <p className="text-gray-600 mb-2">AI-powered personalized product recommendations</p>
+                    <ul className="list-disc list-inside pl-4 text-gray-600 space-y-2">
+                      <li>11% increase in conversions</li>
+                      <li>6% boost in average order value</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-4">
+                    <h2 className="text-xl font-serif text-[#C5B358]">Banking: JP Morgan Chase</h2>
+                    <p className="text-gray-600 mb-2">AI for fraud detection and risk management</p>
+                    <ul className="list-disc list-inside pl-4 text-gray-600 space-y-2">
+                      <li>35% reduction in false positives</li>
+                      <li>$150 million annual savings</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="space-y-4 mt-8">
+                  <h2 className="text-xl font-serif text-[#C5B358]">Hospitality: Marriott International</h2>
+                  <p className="text-gray-600 mb-2">AI-driven revenue management and personalization</p>
+                  <ul className="list-disc list-inside pl-4 text-gray-600 space-y-2">
+                    <li>3-5% increase in RevPAR</li>
+                    <li>20% improvement in guest satisfaction scores</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* 3-Year Strategic Timeline */}
+              <div className="slide min-w-full p-12" id="slide5">
+                <h1 className="text-3xl font-serif mb-8">3-Year Strategic Timeline</h1>
+                <div className="space-y-8">
+                  <div className="relative">
+                    <div className="absolute left-0 top-0 h-full w-1 bg-[#C5B358]"></div>
+                    <div className="relative pl-8">
+                      <div className="absolute left-0 top-0 w-6 h-6 rounded-full bg-[#C5B358] -ml-3"></div>
+                      <h2 className="text-xl font-serif text-[#C5B358]">Year 1: Foundation</h2>
+                      <ul className="list-disc list-inside mt-2 text-gray-600">
+                        <li>Digital touchpoint enhancement</li>
+                        <li>Initial Langham Smart Room pilots</li>
+                        <li>Data infrastructure upgrade</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <div className="absolute left-0 top-0 h-full w-1 bg-[#C5B358]"></div>
+                    <div className="relative pl-8">
+                      <div className="absolute left-0 top-0 w-6 h-6 rounded-full bg-[#C5B358] -ml-3"></div>
+                      <h2 className="text-xl font-serif text-[#C5B358]">Year 2: Expansion</h2>
+                      <ul className="list-disc list-inside mt-2 text-gray-600">
+                        <li>Langham Smart Room technology rollout</li>
+                        <li>Advanced revenue optimization</li>
+                        <li>Cross-property integration initiation</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <div className="absolute left-0 top-0 h-full w-1 bg-[#C5B358]"></div>
+                    <div className="relative pl-8">
+                      <div className="absolute left-0 top-0 w-6 h-6 rounded-full bg-[#C5B358] -ml-3"></div>
+                      <h2 className="text-xl font-serif text-[#C5B358]">Year 3: Optimization</h2>
+                      <ul className="list-disc list-inside mt-2 text-gray-600">
+                        <li>Personalization at scale</li>
+                        <li>Full cross-property integration</li>
+                        <li>AI-driven guest experience enhancements</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Digital Guest Journey Enhancement */}
+              <div className="slide min-w-full p-12" id="slide6">
+                <h1 className="text-3xl font-serif mb-8">Digital Guest Journey Enhancement</h1>
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <h2 className="text-xl font-serif text-[#C5B358]">Langham Mobile App Revamp</h2>
+                    <ul className="list-disc list-inside pl-4 text-gray-600 space-y-2">
+                      <li>Streamlined booking process</li>
+                      <li>In-app check-in and mobile key</li>
+                      <li>Personalized Langham recommendations</li>
+                      <li>24/7 Langham Service Stylists chat</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-4">
+                    <h2 className="text-xl font-serif text-[#C5B358]">Langham.com Optimization</h2>
+                    <ul className="list-disc list-inside pl-4 text-gray-600 space-y-2">
+                      <li>360° virtual Langham room tours</li>
+                      <li>AI-powered Langham booking assistant</li>
+                      <li>Real-time availability updates</li>
+                      <li>Seamless cross-device experience</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="mt-6">
+                  <p className="text-lg font-serif text-[#C5B358]">Expected Outcome:</p>
+                  <p className="text-xl text-gray-600">30% increase in direct bookings across Langham properties</p>
+                </div>
+              </div>
+
+              {/* Langham Smart Room Innovation */}
+              <div className="slide min-w-full p-12" id="slide7">
+                <h1 className="text-3xl font-serif mb-8">Langham Smart Room Innovation</h1>
+                <div className="space-y-4">
+                  <h2 className="text-2xl font-serif text-[#C5B358]">Key Features:</h2>
+                  <ul className="list-disc list-inside text-lg text-gray-600 space-y-2">
+                    <li>Voice-controlled lighting and temperature</li>
+                    <li>Personalized Langham welcome screens</li>
+                    <li>Smart mirrors with weather and Langham services</li>
+                    <li>Occupancy-based energy management</li>
+                    <li>IoT-enabled minibar and Langham in-room dining</li>
+                  </ul>
+                  <h2 className="text-2xl font-serif mt-6 text-[#C5B358]">Implementation Strategy:</h2>
+                  <ol className="list-decimal list-inside text-lg text-gray-600 space-y-2">
+                    <li>Pilot program in 10% of rooms across 5 Langham properties</li>
+                    <li>Gather Langham guest feedback and usage data</li>
+                    <li>Refine and optimize based on Langham-specific insights</li>
+                    <li>Phased rollout to all Langham properties over 18 months</li>
+                    <li>Continuous iteration and Langham-tailored feature updates</li>
+                  </ol>
+                  <div className="mt-6">
+                    <p className="text-lg font-serif text-[#C5B358]">Langham Success Projection:</p>
+                    <p className="text-gray-600">Implementation of Langham Smart Rooms is projected to lead to a 25% increase in guest satisfaction scores and a 7% reduction in energy costs across properties.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Revenue Optimization */}
+              <div className="slide min-w-full p-12" id="slide8">
+                <h1 className="text-3xl font-serif mb-8">Langham Revenue Optimization</h1>
+                <div className="space-y-4">
+                  <h2 className="text-2xl font-serif text-[#C5B358]">Strategies:</h2>
+                  <ul className="list-disc list-inside text-lg text-gray-600 space-y-2">
+                    <li>Implement Langham-specific dynamic pricing algorithms</li>
+                    <li>Develop targeted upselling for Langham experiences</li>
+                    <li>Optimize distribution channel mix for Langham properties</li>
+                    <li>Enhance Langham 1865 loyalty program</li>
+                    <li>Utilize predictive analytics for Langham demand forecasting</li>
+                  </ul>
+                  <h2 className="text-2xl font-serif mt-6 text-[#C5B358]">Action Plan:</h2>
+                  <ol className="list-decimal list-inside text-lg text-gray-600 space-y-2">
+                    <li>Integrate AI-powered revenue management system tailored for Langham</li>
+                    <li>Train Langham staff on new upselling techniques</li>
+                    <li>Conduct A/B testing on Langham-specific pricing strategies</li>
+                    <li>Implement real-time competitor rate monitoring for each Langham market</li>
+                    <li>Develop personalized Langham package recommendations</li>
+                  </ol>
+                  <div className="mt-6">
+                    <p className="text-lg font-serif text-[#C5B358]">Langham Success Projection:</p>
+                    <p className="text-gray-600">Implementation of AI-driven revenue management is projected to lead to a 5-7% increase in RevPAR across the Langham portfolio.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Personalization at Scale */}
+              <div className="slide min-w-full p-12" id="slide9">
+                <h1 className="text-3xl font-serif mb-8">Personalization at Scale for Langham Guests</h1>
+                <div>
+                  <ul className="list-disc list-inside text-lg space-y-3 text-gray-600">
+                    <li>Guest data integration across all Langham properties</li>
+                    <li>Real-time Langham guest preference tracking</li>
+                    <li>Predictive Langham service recommendations</li>
+                    <li>25% increase in repeat Langham bookings</li>
+                  </ul>
+                </div>
+                <div className="mt-6 space-y-4">
+                  <h2 className="text-2xl font-serif text-[#C5B358]">Implementation Steps:</h2>
+                  <ol className="list-decimal list-inside text-lg text-gray-600 space-y-2">
+                    <li>Centralize guest data from all Langham properties</li>
+                    <li>Develop AI algorithms for Langham-specific preference analysis</li>
+                    <li>Create personalized Langham communication templates</li>
+                    <li>Train Langham staff on utilizing personalization insights</li>
+                    <li>Implement feedback loop for continuous Langham experience improvement</li>
+                  </ol>
+                </div>
+              </div>
+
+              {/* Cross-Property Integration */}
+              <div className="slide min-w-full p-12" id="slide10">
+                <h1 className="text-3xl font-serif mb-8">Langham Cross-Property Integration</h1>
+                <div className="space-y-6">
+                  <div>
+                    <h2 className="text-2xl font-serif text-[#C5B358]">Benefits:</h2>
+                    <ul className="list-disc list-inside text-lg text-gray-600 space-y-2">
+                      <li>Seamless guest experience across all Langham properties</li>
+                      <li>Improved operational efficiency for Langham Hotels</li>
+                      <li>Enhanced data-driven decision making for Langham management</li>
+                      <li>Increased cross-selling opportunities between Langham properties</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-serif text-[#C5B358]">Implementation Strategy:</h2>
+                    <ol className="list-decimal list-inside text-lg text-gray-600 space-y-2">
+                      <li>Standardize core systems across all Langham properties</li>
+                      <li>Implement a centralized Langham data warehouse</li>
+                      <li>Develop APIs for seamless Langham system communication</li>
+                      <li>Create a unified Langham guest profile system</li>
+                      <li>Train Langham staff on cross-property procedures</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              {/* Loyalty Program Enhancement */}
+              <div className="slide min-w-full p-12" id="slide11">
+                <h1 className="text-3xl font-serif mb-8">Langham Loyalty Program Enhancement</h1>
+                <div className="space-y-4">
+                  <h2 className="text-2xl font-serif text-[#C5B358]">Key Initiatives:</h2>
+                  <ul className="list-disc list-inside text-lg text-gray-600 space-y-2">
+                    <li>Personalized rewards based on individual preferences</li>
+                    <li>Tiered benefits with exclusive Langham experiences</li>
+                    <li>Partnerships with luxury brands aligned with Langham values</li>
+                    <li>Gamification elements to encourage engagement</li>
+                    <li>Seamless point redemption across all Langham properties</li>
+                  </ul>
+                  <h2 className="text-2xl font-serif mt-6 text-[#C5B358]">Expected Outcomes:</h2>
+                  <ul className="list-disc list-inside text-lg text-gray-600 space-y-2">
+                    <li>30% increase in Langham 1865 program enrollment</li>
+                    <li>25% boost in repeat stays from loyalty members</li>
+                    <li>20% growth in average spend per loyal guest</li>
+                    <li>Improved guest satisfaction and brand loyalty</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Expected Outcomes */}
+              <div className="slide min-w-full p-12" id="slide12">
+                <h1 className="text-3xl font-serif mb-8">Expected Outcomes for Langham Hotels</h1>
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <h2 className="text-xl font-serif text-[#C5B358]">Financial</h2>
+                    <ul className="list-disc list-inside text-gray-600 space-y-2">
+                      <li>18% increase in RevPAR across Langham properties</li>
+                      <li>12% reduction in operational costs</li>
+                      <li>25% growth in Langham 1865 program revenue</li>
+                    </ul>
+                  </div>
+                  <div className="space-y-4">
+                    <h2 className="text-xl font-serif text-[#C5B358]">Guest Satisfaction</h2>
+                    <ul className="list-disc list-inside text-gray-600 space-y-2">
+                      <li>30% improvement in Langham NPS score</li>
+                      <li>35% increase in repeat Langham bookings</li>
+                      <li>50% rise in Langham mobile app engagement</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="mt-6">
+                  <p className="text-lg font-serif text-[#C5B358]">Overall Impact:</p>
+                  <p className="text-xl text-gray-600">Solidifying Langham's position as the leading tech-forward luxury hotel brand</p>
+                </div>
+              </div>
+
+              {/* Next Steps */}
+              <div className="slide min-w-full p-12" id="slide13">
+                <h1 className="text-3xl font-serif mb-8">Next Steps for Langham Hotels</h1>
+                <ol className="list-decimal list-inside text-xl space-y-4 text-gray-600">
+                  <li>Form cross-functional Langham implementation teams</li>
+                  <li>Develop detailed project plans for each Langham initiative</li>
+                  <li>Allocate budget and resources across Langham properties</li>
+                  <li>Establish Langham-specific key performance indicators (KPIs)</li>
+                  <li>Set up regular progress review meetings with Langham leadership</li>
+                  <li>Begin execution of Year 1 initiatives across Langham Hotels</li>
+                </ol>
+                <div className="mt-8">
+                  <p className="text-2xl font-serif text-[#C5B358]">Let's elevate the Langham luxury experience together!</p>
+                </div>
+              </div>
+
+              {/* Thank You Slide */}
+              <div className="slide min-w-full p-12" id="slide14">
+                <div className="max-w-4xl mx-auto space-y-8">
+                  <h1 className="text-4xl font-serif text-center">Thank You</h1>
+                  <div className="w-full h-px bg-[#C5B358]" />
+                  <p className="text-xl text-center text-gray-600">For your attention and commitment to Langham's future</p>
+                  <div className="text-center">
+                    <p className="text-xl italic">"Where Timeless Elegance Meets Artificial Intelligence"</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute top-1/2 left-4 transform -translate-y-1/2 border-[#C5B358] text-[#C5B358] hover:bg-[#C5B358] hover:text-white"
+            onClick={prevSlide}
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute top-1/2 right-4 transform -translate-y-1/2 border-[#C5B358] text-[#C5B358] hover:bg-[#C5B358] hover:text-white"
+            onClick={nextSlide}
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
+        <div className="p-4 flex justify-between items-center border-t border-gray-200">
+          <div className="text-gray-600">Slide {currentSlide + 1} of {totalSlides}</div>
+          <div className="space-x-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={prevSlide}
+              className="border-[#C5B358] text-[#C5B358] hover:bg-[#C5B358] hover:text-white"
+            >
+              Previous
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={nextSlide}
+              className="border-[#C5B358] text-[#C5B358] hover:bg-[#C5B358] hover:text-white"
+            >
+              Next
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Presentation;
+
